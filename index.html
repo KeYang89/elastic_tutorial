@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - What is Elasticsearch?</title>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<slideshow>
+  <slide>
+    <segment class="text-center">
+      <h2>What is Elasticsearch?</h2>
+      <p><img width="350" height="300" src="elastic.PNG" /></p>
+      <p>Press [space] to continue</p>
+    </segment>
+  </slide>
+  
+  <slide>
+    <segment>
+      <h2>What is Elasticsearch?</h2>
+    </segment>
+    <segment>
+      <p>It is a highly scalable search engine</p>
+    </segment>
+    <segment>
+      <p>It is a database companion (not a database)</p>
+    </segment>
+    <segment>
+      <p>It can be hosted with Amazon Web Services</p>
+    </segment>
+    <segment>
+      <p>It is a flexible solution for a difficult problem - how do we quickly and efficiently search huge amounts of data?</p>
+    </segment>
+  </slide>
+  
+  <slide>
+    <segment>
+      <diagram>
+        <rectangle name="aws">
+          GCP
+        </rectangle>
+        <rectangle name="search">
+          Elasticsearch Instance
+        </rectangle>
+        <divider>IAM</divider>
+        <arrow from="website" to="search"></arrow>
+        <rectangle name="website">
+          Koala
+        </rectangle>
+        <arrow from="website" to="client"></arrow>
+        <circle name="client">
+          Browser
+        </circle>
+        <arrow from="client" to="search"></arrow>
+      </diagram>
+    </segment>
+  </slide>
+  
+  <slide>
+    <segment>
+      <h2>Why Elasticsearch?</h2>
+    </segment>
+    <segment>
+      <p>It handles all of the indexing and searching, we just give it an index</p>
+    </segment>
+    <segment>
+      <p>We can protect it and scale it up using GCloud/AWS</p>
+    </segment>
+    <segment>
+      <p>All of the hard work is done by someone else (no load on our servers!)</p>
+    </segment>
+    <segment>
+      <p>It supports autocomplete and term highlighting out of the box</p>
+    </segment>
+    <segment>
+      <p>Your index and queries can be as simple or as complicated as you want them to be</p>
+    </segment>
+  </slide>
+  
+  <slide>
+    <segment>
+      <h2>How does it work?</h2>
+    </segment>
+    <segment>
+      <p>Elasticsearch uses the Lucene search language</p>
+    </segment>
+    <segment>
+      <p>It exposes HTTP endpoints for you to GET, POST, PUT and DELETE to</p>
+    </segment>
+    <segment>
+      <p>As soon as you've created a new instance of Elasticsearch you can start publishing</p>
+    </segment>
+    <segment>
+      <p>Alternatively you can define your indexes at the start</p>
+    </segment>
+    <segment>
+      <p>Which means you can customise how it analyses and indexes your data</p>
+    </segment>
+  </slide>
+
+<slide>
+    <segment>
+      <h2>Show me some code</h2>
+    </segment>
+    <segment>
+      <p>Python</p>
+      <pre>
+        from datetime import datetime
+        from elasticsearch import Elasticsearch
+        es = Elasticsearch()
+
+        myDoc =  {
+                "Id": 1,
+                "FirstName": "Kemaru",
+                "LastName": "Young",
+                "timestamp": datetime.now()
+            },
+
+            {
+                "Id": 2,
+                "FirstName": "Jane",
+                "LastName": "Doe",
+                "timestamp": datetime.now()
+
+            }
+        res = es.index(index="test-index", id=1, body=doc)
+        print(res['result'])
+
+        res = es.get(index="test-index", id=1)
+        print(res['_source'])
+
+        es.indices.refresh(index="test-index")
+
+        res = es.search(index="test-index", body={"query": {"match_all": {}}})
+        print("Got %d Hits:" % res['hits']['total']['value'])
+        for hit in res['hits']['hits']:
+            print("%(timestamp)s %(author)s: %(text)s" % hit["_source"])
+      </pre>
+    </segment>
+  </slide>
+
+  <slide>
+    <segment>
+      <h2>Show me some code</h2>
+    </segment>
+    <segment>
+      <p>Node.js</p>
+      <pre>
+        var myDocs = [
+            {
+                Id: 1,
+                FirstName: "Kemaru",
+                LastName: "Young",
+                "timestamp": Date.now()
+            },
+
+            {
+                Id: 2,
+                FirstName: "Jane",
+                LastName: "Doe",
+                "timestamp": Date.now()
+            }
+        ]
+
+        myDocs = formatForBulkUpdate(myDocs);
+
+        var options = {
+            url: "https://test_host.com/users/_bulk",
+            method: "POST",
+            proxy: "https://test_host.com",
+            data: myDocs
+        }
+
+        //if you are using GCloud, check this document: https://console.developers.google.com/project/_/apiui/credential
+
+
+        //if you are using AWS, check this document: https://www.npmjs.com/package/aws4" 
+        aws4.sign(options, {
+            accessKeyId: "somekeyid",
+            secretAccessKey: "someaccesskey"
+        });
+
+        request(options, function() {
+            console.log("We did it!");
+        });
+      </pre>
+    </segment>
+  </slide>
+  
+  <slide>
+    <segment>
+      <h2>Show me some code</h2>
+      <p>Node.js (searching)</p>
+      <pre>
+        var mySearch = {
+            "query": {
+                "multi_match" : {
+                    "fields" : ["FirstName", "LastName"],
+                    "query" : "Ke",
+                    "type" : "phrase_prefix"
+                }
+            }
+        }
+            
+        var options = {
+            url: "https://test_host.com/users/_search",
+            method: "POST",
+            proxy: "https://test_host.com",
+            data: mySearch
+        }
+
+        aws4.sign(options, {
+            accessKeyId: "somekeyid",
+            secretAccessKey: "someaccesskey"
+        });
+
+        request(options, function(results) {
+            results.forEach(function(result) {
+                console.log(result.FirstName + " " + result.LastName);
+            });
+        });
+      </pre>
+    </segment>
+  </slide>
+    
+  <slide>
+    <segment>
+      <h2>Show me some code</h2>
+      <p>C# (updating)</p>
+      <pre>
+          var requestBody = formatForBulkUpdate(myDocs);
+                
+          var request = (HttpWebRequest) WebRequest.Create("https://test_host.com/users/_bulk");
+          request.Method = "POST";
+          request.ContentType = "text/plain";
+
+          var requestBodyBytes = Encoding.ASCII.GetBytes(requestBody.ToString());
+
+          var creds = new Credentials()
+          {
+              AccessKey = "abc",
+              SecretKey = "def"
+          };
+
+          var signer = new SignV4Util();
+          signer.SignRequest(request, requestBodyBytes, creds, region, serviceName);
+
+          using (var stream = request.GetRequestStream())
+          {
+              stream.Write(requestBodyBytes, 0, requestBodyBytes.Length);
+          }
+      </pre>
+    </segment>
+  </slide>
+    
+  <slide>
+    <segment>
+      <h2>Where are we using Elasticsearch?</h2>
+    </segment>
+    <segment>
+      <p>Web application with lots of data</p>
+      <p>When the user types a query in the search input it uses AJAX to query the endpoint (after a short delay)</p>
+    </segment>
+    <segment>
+      <p>Services that update such data on a timely schedule</p>
+      <p>Cron & Lostash</p>
+    </segment>
+  </slide>
+  
+ <slide>
+    <segment>
+      <h2>Security:</h2>
+        <p>Only allowing specific GCloud/AWS users to update the index, or</p>
+        <p>Go through an API gateway or Lambda functions hosted by GCloud/AWS</p>
+    </segment>
+  </slide>
+  
+  <slide>
+    <segment>
+      <h2>Want to learn more?</h2>
+    </segment>
+    <segment>
+      <p>(Nearly) everything about Elasticsearch has been documented here: </p>
+      <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html</a>
+    </segment>
+    <segment>
+      <p>You can clone a Gitlab repo full of easy-to-use Gulp tasks for interacting with our Elasticsearch instance</p>
+    </segment>
+    <segment>
+      <p>If you have any questions please let me know</p>
+    </segment>
+    <segment>
+      <p>Thanks for watching :)</p>
+    </segment>
+  </slide>
+  
+  <slide>
+    <segment class="text-center">
+      <p>End of presentation</p>
+    </segment>
+  </slide>
+  
+  <navigation></navigation>
+</slideshow>
+      
+  <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>

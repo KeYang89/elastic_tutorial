@@ -1,0 +1,211 @@
+body {
+  background: black;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+body:hover {
+  cursor: default;
+}
+
+h2 {
+  text-align: center;
+}
+
+h2,
+p {
+  padding-bottom: 1em;
+}
+
+pre {
+  color: white;
+  border: none;
+  background: #323232;
+  font-size: 50%;
+  padding: 1em;
+}
+
+html,
+body,
+slideshow,
+slide {
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+slideshow slide {
+  background: linear-gradient(-150deg,#4ad8c3,#83a2f1);
+  opacity: 0;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+  color: white;
+  padding: 50px;
+  font-size: 1.4em;
+  font-family: "Montserrat", sans-serif;
+}
+slideshow slide.active {
+  opacity: 1;
+}
+slideshow slide:first-child IMG {
+  margin: 50px 0;
+}
+slideshow slide:last-of-type {
+  background: none;
+}
+slideshow slide segment {
+  display: block;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+slideshow slide segment.visible {
+  opacity: 1;
+}
+slideshow slide segment footer {
+  color: #cccccc;
+}
+slideshow navigation {
+  width: auto;
+  height: auto;
+  position: absolute;
+  bottom: 1em;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+slideshow navigation item {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  float: left;
+  margin-right: 1em;
+  -webkit-transition: background 0.5s;
+  transition: background 0.5s;
+}
+slideshow navigation item:last-child {
+  margin-right: 0;
+}
+slideshow navigation item.active {
+  background: white;
+}
+slideshow navigation item:hover {
+  cursor: pointer;
+}
+
+diagram {
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+diagram rectangle,
+diagram cloud,
+diagram circle,
+diagram divider,
+diagram arrow {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+diagram rectangle,
+diagram cloud,
+diagram circle {
+  padding: 30px 20px;
+  border-radius: 5px;
+  background: white;
+  border: 2px solid #C2C2C2;
+  color: #777;
+  font-size: 0.7em;
+  text-align: center;
+}
+diagram rectangle {
+  width: 150px;
+  height: 100px;
+}
+diagram circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+}
+diagram divider {
+  width: 500px;
+  height: 0;
+  border: 1px dashed #FF7F7F;
+  top: 250px;
+  color: #FF7F7F;
+}
+diagram rectangle[name="aws"] {
+  left: 125px;
+  top: 25px;
+}
+diagram rectangle[name="search"] {
+  left: 200px;
+  top: 100px;
+}
+diagram rectangle[name="website"] {
+  top: 300px;
+  left: 50px;
+}
+diagram circle[name="client"] {
+  left: 350px;
+  top: 300px;
+}
+diagram arrow {
+  width: 0px;
+  height: 0px;
+}
+diagram arrow::before {
+  width: 100%;
+  height: 1px;
+  content: " ";
+  position: absolute;
+  border: 1px solid white;
+}
+diagram arrow::after {
+  position: absolute;
+  top: 50%;
+}
+diagram arrow[from="website"][to="client"] {
+  top: 350px;
+  left: 200px;
+  width: 150px;
+}
+diagram arrow[from="website"][to="client"]::before {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+diagram arrow[from="website"][to="search"] {
+  height: 150px;
+  top: 180px;
+  left: 197px;
+}
+diagram arrow[from="website"][to="search"]::before {
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+}
+diagram arrow[from="website"][to="search"]::after {
+  content: "Documents";
+}
+diagram arrow[from="client"][to="search"] {
+  left: 350px;
+  height: 150px;
+  top: 180px;
+}
+diagram arrow[from="client"][to="search"]::before {
+  -webkit-transform: rotate(-30deg);
+          transform: rotate(-30deg);
+}
+diagram arrow[from="client"][to="search"]::after {
+  content: "Search Query";
+}
