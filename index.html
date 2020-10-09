@@ -364,10 +364,37 @@
     </segment>
     <segment>
       <p>Services that update such data on a timely schedule</p>
-      <p>Cron & Lostash</p>
+      <p>Cron & Logstash</p>
     </segment>
   </slide>
   
+  <slide>
+    <segment>
+      <h2>Logstash</h2>
+    </segment>
+    <segment>
+      <h3>Installation</h3>
+      <p>Check your java version, need one of these: 
+        <ul><li>Java 8, or</li><li>Java 11, or</li><li> Java 14</li></ul>
+      </p>
+      <p>Make sure JAVA_HOME environment variable is set</p>
+      <p><a href="https://www.elastic.co/guide/en/logstash/current/installing-logstash.html">Installation</a></p>
+    </segment>
+    <segment>
+      <h3>Configuration</h3>
+      <h4>logstash-simple.conf</h4>
+      <pre>
+      input { stdin { } }
+      output {
+        elasticsearch { hosts => ["localhost:9200"] }
+        stdout { codec => rubydebug }
+      }
+      </pre>
+      <h4>run logstash and specify the configuration file with the -f flag</h4>
+      <pre>bin/logstash -f logstash-simple.conf</pre>
+    </segment>
+  </slide>
+
  <slide>
     <segment>
       <h2>Security:</h2>
