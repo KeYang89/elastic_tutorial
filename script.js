@@ -10,7 +10,7 @@ $('navigation item').first().addClass('active');
 
 
 var onUserInput = function(e) {
-  if (e.which == 32 || e.which == 1) {
+  if (e.which == 32 || e.which == 13) {
     if ($('slide.active')
         .find('segment')
         .last()
@@ -47,7 +47,8 @@ var onUserInput = function(e) {
           .next()
           .addClass('active');
       }
-    } else {
+    } 
+    else {
       //Next line of text
       $('slide.active')
       .find('segment.visible')
@@ -60,7 +61,6 @@ var onUserInput = function(e) {
 
 $(document).on('keydown', onUserInput);
 
-$('slide').on('mousedown', onUserInput);
 
 $('navigation item').on('mousedown', function() {
   $('segment').removeClass('visible');

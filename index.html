@@ -13,7 +13,7 @@
     <segment class="text-center">
       <h2>What is Elasticsearch?</h2>
       <p><img width="350" height="300" src="https://github.com/KeYang89/elastic_tutorial/blob/master/elastic.png?raw=true" /></p>
-      <p>Press [space] to continue</p>
+      <p>Press [space] or [enter] to continue</p>
     </segment>
   </slide>
   
@@ -35,29 +35,7 @@
     </segment>
   </slide>
   
-  <slide>
-    <segment>
-      <diagram>
-        <rectangle name="aws">
-          GCP
-        </rectangle>
-        <rectangle name="search">
-          Elasticsearch Instance
-        </rectangle>
-        <divider>IAM</divider>
-        <arrow from="website" to="search"></arrow>
-        <rectangle name="website">
-          Koala
-        </rectangle>
-        <arrow from="website" to="client"></arrow>
-        <circle name="client">
-          Browser
-        </circle>
-        <arrow from="client" to="search"></arrow>
-      </diagram>
-    </segment>
-  </slide>
-  
+
   <slide>
     <segment>
       <h2>Why Elasticsearch?</h2>
@@ -69,10 +47,10 @@
       <p>We can protect it and scale it up using GCloud/AWS</p>
     </segment>
     <segment>
-      <p>All of the hard work is done by someone else (no load on our servers!)</p>
+      <p>All of the heavy-lifting work is done by someone else - no load on our servers</p>
     </segment>
     <segment>
-      <p>It supports autocomplete and term highlighting out of the box</p>
+      <p>It supports <strong>autocomplete</strong> and term highlighting out of the box</p>
     </segment>
     <segment>
       <p>Your index and queries can be as simple or as complicated as you want them to be</p>
@@ -84,7 +62,7 @@
       <h2>How does it work?</h2>
     </segment>
     <segment>
-      <p>Elasticsearch uses the Lucene search language</p>
+      <p>Elasticsearch uses the <a href="https://lucene.apache.org/core/2_9_4/queryparsersyntax.html">Lucene search language</a></p>
     </segment>
     <segment>
       <p>It exposes HTTP endpoints for you to GET, POST, PUT and DELETE to</p>
@@ -100,6 +78,127 @@
     </segment>
   </slide>
 
+  <slide>
+    <segment>
+      <h2>How does it work?</h2>
+      <h3>An Outdate Analogy</h3>
+      <h4><a href="https://www.elastic.co/blog/index-vs-type">Reference</a></h4>
+    </segment>
+    <segment>
+      <p>
+        This analogy assumes “index” being similar to a “database” in an SQL database, and a “type” being equivalent to a “table”.
+      </p>
+    <table>
+          <tbody>
+          <tr style="height: 23px;">
+          <td style="height: 23px;">MySQL/RDBMS</td>
+          <td style="height: 23px;">Elastic Search</td>
+          </tr>
+          <tr style="height: 23px;">
+          <td style="height: 23px;">Database</td>
+          <td style="height: 23px;">
+            <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html">Index</a>
+          </td>
+          </tr>
+          <tr style="height: 23px;">
+          <td style="height: 23px;">Table</td>
+          <td style="height: 23px;">Type (deprecated)</td>
+          </tr>
+          <tr style="height: 23px;">
+          <td style="height: 23px;">Row</td>
+          <td style="height: 23px;">Document</td>
+          </tr>
+          </tbody>        
+    </table>
+    </segment>
+      <segment>
+      <p>
+      This was a bad analogy that led to incorrect assumptions. In an SQL database, tables are independent of each other. The columns in one table have no bearing on columns with the same name in another table. This is not the case for fields in a mapping type.
+      </p>
+      <a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.0/removal-of-types.html">Details</a>
+    </segment>
+  </slide>
+  <slide>
+    <segment>
+      <h2>How does it work?</h2>
+      <h3>Terminologies</h3>
+    </segment>
+    <segment>    
+      <div class="tree">
+              <ul>
+                  <li>
+                      <a href="#">Elasticsearch Index</a>
+                      <ul>
+                          <li><a href="#">Shard</a>
+                              <ul>
+                                <li class="explain"><a href="#">Lucene Index</a><ul>
+                                  <li><a href="#">Segment</a></li>
+                                   <li><a href="#">Segment</a></li>
+                                </ul></li>
+                              </ul>
+                            </li>
+                             <li><a href="#">Shard</a>
+                              <ul>
+                                <li class="explain"><a href="#">Lucene Index</a><ul>
+                                  <li><a href="#">Segment</a></li>
+                                   <li><a href="#">Segment</a></li>
+                                </ul></li>
+                              </ul>
+                            </li>
+                            <li><a href="#">Shard</a>
+                              <ul>
+                                <li class="explain"><a href="#">Lucene Index</a><ul>
+                                  <li><a href="#">Segment</a></li>
+                                   <li><a href="#">Segment</a></li>
+                                </ul></li>
+                              </ul>
+                            </li>
+                      </ul> 
+                  </li>       
+              </ul>
+              
+          </div>
+    </segment>
+  </slide>
+
+  <slide>
+    <segment>
+      <h2>Terminologies</h2>
+    </segment>
+    <segment>
+    <h3>Shards and Replicas As the Foundation of Elasticsearch</h3>
+    <p>Each Elasticsearch shard is an Apache Lucene index, with each individual Lucene index containing a subset of the documents in the Elasticsearch index</p>
+    <p>Having the right number of shards is important for performance. It is thus wise to plan in advance. When queries are run across different shards in parallel, they execute faster than an index composed of a single shard, but only if each shard is located on a different node and there are sufficient nodes in the cluster.</p>
+    </segment>
+      </slide>
+<slide>
+    <segment>
+      <h2>Show me some code</h2>
+    </segment>
+    <segment>
+    <p>When creating an index, you can set the number of shards and replicas as properties of the index</p>
+    <p>When an index is created, the number of shards is set, and this cannot be changed later without reindexing the data.</p>
+    <pre>PUT /some_index
+          {
+
+              "settings" : {
+
+                  "index" : {
+
+                      "number_of_shards" : 6,
+
+                      "number_of_replicas" : 2
+
+                  }
+
+              }
+
+          }
+  </pre>
+
+
+    </segment>
+  </slide>
 <slide>
     <segment>
       <h2>Show me some code</h2>
@@ -260,7 +359,7 @@
       <h2>Where are we using Elasticsearch?</h2>
     </segment>
     <segment>
-      <p>Web application with lots of data</p>
+      <p>Web application enriched with data</p>
       <p>When the user types a query in the search input it uses AJAX to query the endpoint (after a short delay)</p>
     </segment>
     <segment>
@@ -282,17 +381,25 @@
       <h2>Want to learn more?</h2>
     </segment>
     <segment>
-      <p>(Nearly) everything about Elasticsearch has been documented here: </p>
-      <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html</a>
+      <p>Run Elastic on the Cloud for free (trial)
+      <a href="https://www.elastic.co/cloud/">https://www.elastic.co/cloud/</a>
+      </p>
     </segment>
     <segment>
-      <p>You can clone a Gitlab repo full of easy-to-use Gulp tasks for interacting with our Elasticsearch instance</p>
+      <p>(Nearly) everything about Elasticsearch has been documented here: 
+      <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html</a>
+      </p>
+    </segment>
+    <segment>
+      <p>Go to elasticsearch Github:
+        <a href="https://github.com/elastic/elasticsearch">https://github.com/elastic/elasticsearch</a>
+      </p>
     </segment>
     <segment>
       <p>If you have any questions please let me know</p>
     </segment>
     <segment>
-      <p>Thanks for watching :)</p>
+      <p>Thanks for watching :D</p>
     </segment>
   </slide>
   
