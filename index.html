@@ -277,12 +277,12 @@
 
         //if you are using AWS, check this document: https://www.npmjs.com/package/aws4" 
         aws4.sign(options, {
-            accessKeyId: "somekeyid",
-            secretAccessKey: "someaccesskey"
+            accessKeyId: "some_access_key_id",
+            secretAccessKey: "some_secret_access_key"
         });
 
         request(options, function() {
-            console.log("We did it!");
+            console.log("It works!");
         });
       </pre>
     </segment>
@@ -311,8 +311,8 @@
         }
 
         aws4.sign(options, {
-            accessKeyId: "somekeyid",
-            secretAccessKey: "someaccesskey"
+            accessKeyId: "some_access_key_id",
+            secretAccessKey: "some_secret_access_key"
         });
 
         request(options, function(results) {
@@ -339,8 +339,8 @@
 
           var creds = new Credentials()
           {
-              AccessKey = "abc",
-              SecretKey = "def"
+              AccessKey = "some_access_key",
+              SecretKey = "some_secret_key"
           };
 
           var signer = new SignV4Util();
