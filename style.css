@@ -99,6 +99,7 @@ slideshow navigation {
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+  z-index: 999;
 }
 slideshow navigation item {
   width: 1em;
