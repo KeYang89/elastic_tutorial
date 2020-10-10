@@ -855,3 +855,28 @@ div.tree > ul > li > a {
 .tree li a:hover+ul ul::before{
   border-color:  #aaa;
 }
+/* ------------------------------------------------------------------ */
+/* Timer */
+/* ------------------------------------------------------------------ */
+
+#timer {
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  color: white;
+  position: absolute;
+  z-index: 99999;
+  margin-bottom: 0px;
+  left: 1em;
+  bottom: 1em;
+}
+#timer span {
+  font-size: 20px;
+  color: white;
+  margin: 0 3px 0 15px;
+}
+#timer span:first-child {
+  margin-left: 0;
+}
+
+
+
