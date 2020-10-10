@@ -627,7 +627,7 @@ diagram arrow[from="client"][to="search"]::after {
   padding: 0 0 1em 1em;
   }
 
-.tree ul li { padding: 1em 0 0 1em; }
+.tree ul li { padding: 1em 0.5em 0 0.5em; }
 
 .tree > li:last-child { padding-bottom: 0; }
 
