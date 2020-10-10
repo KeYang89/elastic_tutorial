@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - What is Elasticsearch?</title>
+  <title>Elastic Search</title>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat'><link rel="stylesheet" href="./style.css">
 
@@ -28,10 +28,10 @@
       <p>It is a database companion (not a database)</p>
     </segment>
     <segment>
-      <p>It can be hosted with Amazon Web Services</p>
+      <p>It can be hosted with Gloud/AWS</p>
     </segment>
     <segment>
-      <p>It is a flexible solution for a difficult problem - how do we quickly and efficiently search huge amounts of data?</p>
+      <p>It is a flexible solution for a difficult problem - <br /> how do we quickly and efficiently search huge amounts of data?</p>
     </segment>
   </slide>
   
@@ -86,7 +86,7 @@
     </segment>
     <segment>
       <p>
-        This analogy assumes “index” being similar to a “database” in an SQL database, and a “type” being equivalent to a “table”.
+        This analogy assumes “index” being similar to a “database” in an SQL database, <br /> and a “type” being equivalent to a “table”.
       </p>
     <table>
           <tbody>
@@ -113,7 +113,7 @@
     </segment>
       <segment>
       <p>
-      This was a bad analogy that led to incorrect assumptions. In an SQL database, tables are independent of each other. The columns in one table have no bearing on columns with the same name in another table. This is not the case for fields in a mapping type.
+      This was a bad analogy that led to incorrect assumptions. <br /> In an SQL database, tables are independent of each other. <br />The columns in one table have no bearing on columns with the same name in another table. <br /> This is not the case for fields in a mapping type.
       </p>
       <a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.0/removal-of-types.html">Details</a>
     </segment>
@@ -167,8 +167,8 @@
     </segment>
     <segment>
     <h3>Shards and Replicas As the Foundation of Elasticsearch</h3>
-    <p>Each Elasticsearch shard is an Apache Lucene index, with each individual Lucene index containing a subset of the documents in the Elasticsearch index</p>
-    <p>Having the right number of shards is important for performance. It is thus wise to plan in advance. When queries are run across different shards in parallel, they execute faster than an index composed of a single shard, but only if each shard is located on a different node and there are sufficient nodes in the cluster.</p>
+    <p>Each Elasticsearch shard is an Apache Lucene index, <br /> with each individual Lucene index containing a subset of the documents in the Elasticsearch index</p>
+    <p>Having the right number of shards is important for performance. <br /> It is thus wise to plan in advance. <br /> When queries are run across different shards in parallel, they execute faster than an index composed of a single shard, <br /> but only if each shard is located on a different node and there are sufficient nodes in the cluster.</p>
     </segment>
       </slide>
 <slide>
@@ -177,7 +177,7 @@
     </segment>
     <segment>
     <p>When creating an index, you can set the number of shards and replicas as properties of the index</p>
-    <p>When an index is created, the number of shards is set, and this cannot be changed later without reindexing the data.</p>
+    <p>When an index is created, the number of shards is set, <br /> and this cannot be changed later without reindexing the data.</p>
     <pre>PUT /some_index
           {
 
@@ -445,7 +445,7 @@
       <h2>Want to learn more?</h2>
     </segment>
     <segment>
-      <p>Run Elastic on the Cloud for free (trial)
+      <p>Run Elastic on the GCloud for free (trial)
       <a href="https://www.elastic.co/cloud/">https://www.elastic.co/cloud/</a>
       </p>
     </segment>
