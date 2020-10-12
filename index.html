@@ -230,12 +230,13 @@
         options = {
           'settings' : {
                  'index' : {
-                      'number_of_shards':1 
+                      'number_of_shards':3,
+                      'number_of_replicas':2
                    }
             },
           'data': myDoc
         }
-        
+
         res = es.index(index='test-index', id=1, body=myDoc)
         print(res['result'])
 
