@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang='en' >
 <head>
-  <meta charset="UTF-8">
+  <meta charset='UTF-8'>
   <title>Elastic Search</title>
-  <meta name="author" content="Ke Yang">
+  <meta name='author' content='Ke Yang'>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat'><link rel="stylesheet" href="./style.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat'><link rel='stylesheet' href='./style.css'>
 
 </head>
 <body>
 <slideshow>
   <slide>
-    <segment class="text-center">
+    <segment class='text-center'>
       <h2>What is Elasticsearch?</h2>
-      <p><img width="350" height="300" src="https://github.com/KeYang89/elastic_tutorial/blob/master/elastic.png?raw=true" /></p>
+      <p><img width='350' height='300' src='https://github.com/KeYang89/elastic_tutorial/blob/master/elastic.png?raw=true' /></p>
       <p>Press [space] or [enter] to continue</p>
     </segment>
   </slide>
@@ -64,7 +64,7 @@
     </segment>
     <segment>
       <p>Elasticsearch uses the 
-        <a href="https://lucene.apache.org/core/2_9_4/queryparsersyntax.html" target="_blank">Lucene search language</a></p>
+        <a href='https://lucene.apache.org/core/2_9_4/queryparsersyntax.html' target='_blank'>Lucene search language</a></p>
     </segment>
     <segment>
       <p>It exposes HTTP endpoints for you to GET, POST, PUT and DELETE</p>
@@ -84,7 +84,7 @@
     <segment>
       <h2>How does it work?</h2>
       <h3>An Outdate Analogy</h3>
-      <h4><a href="https://www.elastic.co/blog/index-vs-type" target="_blank">Reference</a></h4>
+      <h4><a href='https://www.elastic.co/blog/index-vs-type' target='_blank'>Reference</a></h4>
     </segment>
     <segment>
       <p>
@@ -92,23 +92,23 @@
       </p>
     <table>
           <tbody>
-          <tr style="height: 23px;">
-          <td style="height: 23px;">MySQL/RDBMS</td>
-          <td style="height: 23px;">Elastic Search</td>
+          <tr style='height: 23px;'>
+          <td style='height: 23px;'>MySQL/RDBMS</td>
+          <td style='height: 23px;'>Elastic Search</td>
           </tr>
-          <tr style="height: 23px;">
-          <td style="height: 23px;">Database</td>
-          <td style="height: 23px;">
-            <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html" target="_blank">Index</a>
+          <tr style='height: 23px;'>
+          <td style='height: 23px;'>Database</td>
+          <td style='height: 23px;'>
+            <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html' target='_blank'>Index</a>
           </td>
           </tr>
-          <tr style="height: 23px;">
-          <td style="height: 23px;">Table</td>
-          <td style="height: 23px;">Type (deprecated)</td>
+          <tr style='height: 23px;'>
+          <td style='height: 23px;'>Table</td>
+          <td style='height: 23px;'>Type (deprecated)</td>
           </tr>
-          <tr style="height: 23px;">
-          <td style="height: 23px;">Row</td>
-          <td style="height: 23px;">Document</td>
+          <tr style='height: 23px;'>
+          <td style='height: 23px;'>Row</td>
+          <td style='height: 23px;'>Document</td>
           </tr>
           </tbody>        
     </table>
@@ -117,7 +117,7 @@
       <p>
       This was a bad analogy that led to incorrect assumptions. <br /> In an SQL database, tables are independent of each other. <br />The columns in one table have no bearing on columns with the same name in another table. <br /> This is not the case for fields in a mapping type.
       </p>
-      <a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.0/removal-of-types.html" target="_blank">Details</a>
+      <a href='https://www.elastic.co/guide/en/elasticsearch/reference/6.0/removal-of-types.html' target='_blank'>Details</a>
     </segment>
   </slide>
   <slide>
@@ -126,32 +126,32 @@
       <h3>Terminologies</h3>
     </segment>
     <segment>    
-      <div class="tree">
+      <div class='tree'>
               <ul>
                   <li>
-                      <a href="#">Elasticsearch Index</a>
+                      <a href='#'>Elasticsearch Index</a>
                       <ul>
-                          <li><a href="#">Shard</a>
+                          <li><a href='#'>Shard</a>
                               <ul>
-                                <li class="explain"><a href="#">Lucene Index</a><ul>
-                                  <li><a href="#">Segment</a></li>
-                                   <li><a href="#">Segment</a></li>
+                                <li class='explain'><a href='#'>Lucene Index</a><ul>
+                                  <li><a href='#'>Segment</a></li>
+                                   <li><a href='#'>Segment</a></li>
                                 </ul></li>
                               </ul>
                             </li>
-                             <li><a href="#">Shard</a>
+                             <li><a href='#'>Shard</a>
                               <ul>
-                                <li class="explain"><a href="#">Lucene Index</a><ul>
-                                  <li><a href="#">Segment</a></li>
-                                   <li><a href="#">Segment</a></li>
+                                <li class='explain'><a href='#'>Lucene Index</a><ul>
+                                  <li><a href='#'>Segment</a></li>
+                                   <li><a href='#'>Segment</a></li>
                                 </ul></li>
                               </ul>
                             </li>
-                            <li><a href="#">Shard</a>
+                            <li><a href='#'>Shard</a>
                               <ul>
-                                <li class="explain"><a href="#">Lucene Index</a><ul>
-                                  <li><a href="#">Segment</a></li>
-                                   <li><a href="#">Segment</a></li>
+                                <li class='explain'><a href='#'>Lucene Index</a><ul>
+                                  <li><a href='#'>Segment</a></li>
+                                   <li><a href='#'>Segment</a></li>
                                 </ul></li>
                               </ul>
                             </li>
@@ -183,13 +183,13 @@
     <pre>PUT /some_index
           {
 
-              "settings" : {
+              'settings' : {
 
-                  "index" : {
+                  'index' : {
 
-                      "number_of_shards" : 6,
+                      'number_of_shards' : 6,
 
-                      "number_of_replicas" : 2
+                      'number_of_replicas' : 2
 
                   }
 
@@ -212,32 +212,42 @@
         from elasticsearch import Elasticsearch
         es = Elasticsearch()
 
-        myDoc =  {
-                "Id": 1,
-                "FirstName": "Kemaru",
-                "LastName": "Young",
-                "timestamp": datetime.now()
+        myDoc = [{
+                'Id': 1,
+                'FirstName': 'Kemaru',
+                'LastName': 'Young',
+                'timestamp': datetime.now()
             },
 
             {
-                "Id": 2,
-                "FirstName": "Jane",
-                "LastName": "Doe",
-                "timestamp": datetime.now()
+                'Id': 2,
+                'FirstName': 'Jane',
+                'LastName': 'Doe',
+                'timestamp': datetime.now()
 
-            }
-        res = es.index(index="test-index", id=1, body=doc)
+            }]
+
+        options = {
+          'settings' : {
+                 'index' : {
+                      'number_of_shards':1 
+                   }
+            },
+          'data': myDoc
+        }
+        
+        res = es.index(index='test-index', id=1, body=myDoc)
         print(res['result'])
 
-        res = es.get(index="test-index", id=1)
+        res = es.get(index='test-index', id=1)
         print(res['_source'])
 
-        es.indices.refresh(index="test-index")
+        es.indices.refresh(index='test-index')
 
-        res = es.search(index="test-index", body={"query": {"match_all": {}}})
-        print("Got %d Hits:" % res['hits']['total']['value'])
+        res = es.search(index='test-index', body={'query': {'match_all': {}}})
+        print('Got %d Hits:' % res['hits']['total']['value'])
         for hit in res['hits']['hits']:
-            print("%(timestamp)s %(author)s: %(text)s" % hit["_source"])
+            print('%(timestamp)s %(author)s: %(text)s' % hit['_source'])
       </pre>
     </segment>
   </slide>
@@ -252,39 +262,39 @@
         var myDocs = [
             {
                 Id: 1,
-                FirstName: "Kemaru",
-                LastName: "Young",
-                "timestamp": Date.now()
+                FirstName: 'Kemaru',
+                LastName: 'Young',
+                'timestamp': Date.now()
             },
 
             {
                 Id: 2,
-                FirstName: "Jane",
-                LastName: "Doe",
-                "timestamp": Date.now()
+                FirstName: 'Jane',
+                LastName: 'Doe',
+                'timestamp': Date.now()
             }
         ]
 
         myDocs = formatForBulkUpdate(myDocs);
 
         var options = {
-            url: "https://test_host.com/users/_bulk",
-            method: "POST",
-            proxy: "https://test_host.com",
+            url: 'https://test_host.com/users/_bulk',
+            method: 'POST',
+            proxy: 'https://test_host.com',
             data: myDocs
         }
 
         //if you are using GCloud, check this document: https://console.developers.google.com/project/_/apiui/credential
 
 
-        //if you are using AWS, check this document: https://www.npmjs.com/package/aws4" 
+        //if you are using AWS, check this document: https://www.npmjs.com/package/aws4' 
         aws4.sign(options, {
-            accessKeyId: "some_access_key_id",
-            secretAccessKey: "some_secret_access_key"
+            accessKeyId: 'some_access_key_id',
+            secretAccessKey: 'some_secret_access_key'
         });
 
         request(options, function() {
-            console.log("It works!");
+            console.log('It works!');
         });
       </pre>
     </segment>
@@ -296,30 +306,30 @@
       <p>Node.js (searching)</p>
       <pre>
         var mySearch = {
-            "query": {
-                "multi_match" : {
-                    "fields" : ["FirstName", "LastName"],
-                    "query" : "Ke",
-                    "type" : "phrase_prefix"
+            'query': {
+                'multi_match' : {
+                    'fields' : ['FirstName', 'LastName'],
+                    'query' : 'Ke',
+                    'type' : 'phrase_prefix'
                 }
             }
         }
             
         var options = {
-            url: "https://test_host.com/users/_search",
-            method: "POST",
-            proxy: "https://test_host.com",
+            url: 'https://test_host.com/users/_search',
+            method: 'POST',
+            proxy: 'https://test_host.com',
             data: mySearch
         }
 
         aws4.sign(options, {
-            accessKeyId: "some_access_key_id",
-            secretAccessKey: "some_secret_access_key"
+            accessKeyId: 'some_access_key_id',
+            secretAccessKey: 'some_secret_access_key'
         });
 
         request(options, function(results) {
             results.forEach(function(result) {
-                console.log(result.FirstName + " " + result.LastName);
+                console.log(result.FirstName + ' ' + result.LastName);
             });
         });
       </pre>
@@ -333,16 +343,16 @@
       <pre>
           var requestBody = formatForBulkUpdate(myDocs);
                 
-          var request = (HttpWebRequest) WebRequest.Create("https://test_host.com/users/_bulk");
-          request.Method = "POST";
-          request.ContentType = "text/plain";
+          var request = (HttpWebRequest) WebRequest.Create('https://test_host.com/users/_bulk');
+          request.Method = 'POST';
+          request.ContentType = 'text/plain';
 
           var requestBodyBytes = Encoding.ASCII.GetBytes(requestBody.ToString());
 
           var creds = new Credentials()
           {
-              AccessKey = "some_access_key",
-              SecretKey = "some_secret_key"
+              AccessKey = 'some_access_key',
+              SecretKey = 'some_secret_key'
           };
 
           var signer = new SignV4Util();
@@ -371,17 +381,17 @@
   </slide>
   <slide>
     <segment>    
-      <div class="tree">
+      <div class='tree'>
               <ul>
                   <li>
-                      <a href="#">User</a>
+                      <a href='#'>User</a>
                       <ul>
-                          <li><a href="#">Kibana</a>
+                          <li><a href='#'>Kibana</a>
                               <ul>
-                                <li><a href="#">Elastic Search</a>
+                                <li><a href='#'>Elastic Search</a>
                                   <ul>
-                                  <li class="explain"><a href="#">Logstash</a>
-                                   <ul><li><a href="#">Log1 </a> <ul><li><a href="#">Microservices1 </a> </li></ul> </li><li><a href="#">Log2 </a><ul><li><a href="#">Microservices2 </a> </li></ul> </li></li><li><a href="#">Log3</a><ul><li><a href="#">Microservices3 </a> </li></ul> </li></li></ul>
+                                  <li class='explain'><a href='#'>Logstash</a>
+                                   <ul><li><a href='#'>Log1 </a> <ul><li><a href='#'>Microservices1 </a> </li></ul> </li><li><a href='#'>Log2 </a><ul><li><a href='#'>Microservices2 </a> </li></ul> </li></li><li><a href='#'>Log3</a><ul><li><a href='#'>Microservices3 </a> </li></ul> </li></li></ul>
                                    </li>
                                   </ul>
                               </li>
@@ -407,7 +417,7 @@
         <ul><li>Java 8, or</li><li>Java 11, or</li><li> Java 14</li></ul>
       </p>
       <p>Make sure JAVA_HOME environment variable is set</p>
-      <p><a href="https://www.elastic.co/guide/en/logstash/current/installing-logstash.html" target="_blank">Installation</a></p>
+      <p><a href='https://www.elastic.co/guide/en/logstash/current/installing-logstash.html' target='_blank'>Installation</a></p>
     </segment>
 </slide>
   <slide>
@@ -420,7 +430,7 @@
       <pre>
       input { stdin { } }
       output {
-        elasticsearch { hosts => ["localhost:9200"] }
+        elasticsearch { hosts => ['localhost:9200'] }
         stdout { codec => rubydebug }
       }
       </pre>
@@ -429,8 +439,8 @@
     </segment>
     <segment>
       <h3>Python logging with Logstash</h3>
-      <p><a href="https://python-logstash-async.readthedocs.io/en/stable/" target="_blank">python-logstash-async</a>, or</p>
-      <p><a href="https://pypi.org/project/python3-logstash/" target="_blank">python3-logstash</a></p>
+      <p><a href='https://python-logstash-async.readthedocs.io/en/stable/' target='_blank'>python-logstash-async</a>, or</p>
+      <p><a href='https://pypi.org/project/python3-logstash/' target='_blank'>python3-logstash</a></p>
     </segment>
   </slide>
 
@@ -448,17 +458,17 @@
     </segment>
     <segment>
       <p>Run Elastic on the GCloud for free (trial)
-      <a href="https://www.elastic.co/cloud/" target="_blank">https://www.elastic.co/cloud/</a>
+      <a href='https://www.elastic.co/cloud/' target='_blank'>https://www.elastic.co/cloud/</a>
       </p>
     </segment>
     <segment>
       <p>(Nearly) everything about Elasticsearch has been documented here: 
-      <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html" target="_blank">https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html</a>
+      <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html' target='_blank'>https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html</a>
       </p>
     </segment>
     <segment>
       <p>Go to elasticsearch Github:
-        <a href="https://github.com/elastic/elasticsearch" target="_blank">https://github.com/elastic/elasticsearch</a>
+        <a href='https://github.com/elastic/elasticsearch' target='_blank'>https://github.com/elastic/elasticsearch</a>
       </p>
     </segment>
     <segment>
@@ -470,21 +480,21 @@
   </slide>
   
   <slide>
-    <segment class="text-center">
+    <segment class='text-center'>
       <p>End of presentation</p>
     </segment>
   </slide>
   
   <navigation></navigation>
-  <div id="timer">
-  <span id="days"></span>days
-  <span id="hours"></span>hours
-  <span id="minutes"></span>minutes
-  <span id="seconds"></span>seconds
+  <div id='timer'>
+  <span id='days'></span>days
+  <span id='hours'></span>hours
+  <span id='minutes'></span>minutes
+  <span id='seconds'></span>seconds
 </div>
 </slideshow>
      
-  <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script><script  src="./script.js"></script>
+  <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script><script  src='./script.js'></script>
 
 </body>
 </html>
