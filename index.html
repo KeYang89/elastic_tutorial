@@ -237,7 +237,7 @@
           'data': myDoc
         }
 
-        res = es.index(index='test-index', id=1, body=myDoc)
+        res = es.index(index='test-index', id=1, body=options)
         print(res['result'])
 
         res = es.get(index='test-index', id=1)
